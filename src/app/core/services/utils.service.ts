@@ -7,7 +7,8 @@ import {
   chevronForwardOutline,
   menuOutline,
   homeOutline,
-  timerOutline
+  timerOutline,
+  arrowBackOutline
 } from "ionicons/icons";
 import {ToastController, LoadingController} from "@ionic/angular/standalone";
 
@@ -22,7 +23,10 @@ export class UtilsService {
   }
 
   registerIcons() {
-    addIcons({searchOutline, moonOutline, sunnyOutline, chevronForwardOutline, menuOutline, homeOutline, timerOutline})
+    addIcons({
+      searchOutline, moonOutline, sunnyOutline, chevronForwardOutline, menuOutline, homeOutline, timerOutline,
+      arrowBackOutline
+    })
   }
 
   showLoading(message: string) {

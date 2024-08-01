@@ -11,10 +11,10 @@ import {
   IonCol,
   IonButton, IonText, IonSelect, IonSelectOption, IonList, IonItem, IonLabel
 } from "@ionic/angular/standalone";
-import {HeaderComponent} from "../components/header/header.component";
+import {HeaderComponent} from "../../components/header/header.component";
 import {ReactiveFormsModule} from "@angular/forms";
-import {ItemsThumbnailActionComponent} from "../components/items-thumbnail-action/items-thumbnail-action.component";
-import {ItemSkeletonComponent} from "../components/item-skeleton/item-skeleton.component";
+import {ItemsThumbnailActionComponent} from "../../components/items-thumbnail-action/items-thumbnail-action.component";
+import {ItemSkeletonComponent} from "../../components/item-skeleton/item-skeleton.component";
 
 export const MODULES_HOME = [
   IonContent,

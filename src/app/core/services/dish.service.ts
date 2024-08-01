@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
 @Injectable({
   providedIn: 'root'
 })
-export class MealService {
+export class DishService {
   private httpClient = inject(HttpClient);
 
   constructor() {
@@ -26,5 +26,9 @@ export class MealService {
 
   fetchMealByCategory(category: string) {
     return this.httpClient.get(`${env.api.endpoints.meals.filter}?c=${category}`);
+  }
+
+  fetchDishDetailById(id: string) {
+    return this.httpClient.get(`${env.api.endpoints.meals.detail}?i=${id}`);
   }
 }
