@@ -1,14 +1,14 @@
 import {Component, inject} from '@angular/core';
 import {MODULES_HOME} from "./home.index";
-import {DishService} from "../../core/services/dish.service";
+import {DishService} from "@services/dish.service";
 import {catchError, throwError} from "rxjs";
-import {UtilsService} from "../../core/services/utils.service";
-import {Category} from "../../core/interfaces/category.interface";
+import {UtilsService} from "@services/utils.service";
+import {Category} from "@interfaces/category.interface";
 import {FormsModule} from "@angular/forms";
-import {Meal} from "../../core/interfaces/meal.interface";
+import {Meal} from "@interfaces/meal.interface";
 import {ActivatedRoute, Router} from "@angular/router";
-import {HistoryService} from "../../core/services/history.service";
-import {HistoryItem} from "../../core/interfaces/history-item.interface";
+import {HistoryService} from "@services/history.service";
+import {HistoryItem} from "@interfaces/history-item.interface";
 
 @Component({
   selector: 'app-home',

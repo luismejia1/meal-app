@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {IonApp, IonRouterOutlet} from '@ionic/angular/standalone';
-import {UtilsService} from "./core/services/utils.service";
+import {UtilsService} from "@services/utils.service";
 import {SlideMenuComponent} from "./components/slide-menu/slide-menu.component";
 
 @Component({

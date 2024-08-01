@@ -2,8 +2,8 @@ import {Component, inject} from '@angular/core';
 import {IonIcon
 } from '@ionic/angular/standalone';
 import {ActivatedRoute} from "@angular/router";
-import {DishService} from "../../core/services/dish.service";
-import {Meal} from "../../core/interfaces/meal.interface";
+import {DishService} from "@services/dish.service";
+import {Meal} from "@interfaces/meal.interface";
 import {DomSanitizer} from "@angular/platform-browser";
 import {MODULES_DISH_DETAIL} from "./dish-detail.index";
 

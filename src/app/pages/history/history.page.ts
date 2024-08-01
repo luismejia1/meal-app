@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
-import {HistoryItem} from "../../core/interfaces/history-item.interface";
-import {HistoryService} from "../../core/services/history.service";
+import {HistoryItem} from "@interfaces/history-item.interface";
+import {HistoryService} from "@services/history.service";
 import {MODULES_HISTORY} from "./history.index";
-import {UtilsService} from "../../core/services/utils.service";
+import {UtilsService} from "@services/utils.service";
 import {Router} from "@angular/router";
 
 @Component({

@@ -19,7 +19,12 @@
     "target": "es2022",
     "module": "es2020",
     "lib": ["es2018", "dom"],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
+    "paths": {
+      "@services/*": ["src/app/core/services/*"],
+      "@interfaces/*": ["src/app/core/interfaces/*"],
+    }
+
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
