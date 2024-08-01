@@ -9,7 +9,8 @@ import {
   homeOutline,
   timerOutline,
   arrowBackOutline,
-  trashOutline
+  trashOutline,
+  refreshOutline
 } from "ionicons/icons";
 import {ToastController, LoadingController} from "@ionic/angular/standalone";
 
@@ -26,7 +27,7 @@ export class UtilsService {
   registerIcons() {
     addIcons({
       searchOutline, moonOutline, sunnyOutline, chevronForwardOutline, menuOutline, homeOutline, timerOutline,
-      arrowBackOutline, trashOutline
+      arrowBackOutline, trashOutline, refreshOutline
     })
   }
 

@@ -17,7 +17,7 @@ import {MODULES_DISH_DETAIL} from "./dish-detail.index";
 export class DishDetailPage {
   private dishService = inject(DishService);
   idDish: string = '';
-  reciepeUrlVideo: any = '';
+  recipeUrlVideo: any = '';
   dish!: Meal;
   isExpanded: boolean = false; // Tracks whether the instructions are expanded
 
@@ -32,7 +32,7 @@ export class DishDetailPage {
   fetchDishDetail() {
     this.dishService.fetchDishDetailById(this.idDish).subscribe((dish: any) => {
       this.dish = dish.meals[0];
-      this.reciepeUrlVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.dish.strYoutube.replace('watch?v=', 'embed/'));
+      this.recipeUrlVideo = this.sanitizer.bypassSecurityTrustResourceUrl(this.dish.strYoutube.replace('watch?v=', 'embed/'));
     });
   }
 

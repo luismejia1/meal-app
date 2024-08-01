@@ -6,7 +6,7 @@ import {UtilsService} from "../../core/services/utils.service";
 import {Category} from "../../core/interfaces/category.interface";
 import {FormsModule} from "@angular/forms";
 import {Meal} from "../../core/interfaces/meal.interface";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {HistoryService} from "../../core/services/history.service";
 import {HistoryItem} from "../../core/interfaces/history-item.interface";
 
@@ -29,9 +29,15 @@ export class HomePage {
   showSkeletonLoading: boolean = false;
   history: HistoryItem[] = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute,) {
     this.fetchCategoriesOptions();
     this.history = this.historyService.getHistory() || [];
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      if (params.search) {
+        this.nameToSearch = params.search;
+        this.searchMealByName(this.nameToSearch);
+      }
+    });
   }
 
   fetchCategoriesOptions() {
@@ -105,6 +111,13 @@ export class HomePage {
       this.searchMealByName(this.nameToSearch);
       this.saveToHistory(this.nameToSearch)
     }
+  }
+
+  resetSearch() {
+    this.nameToSearch = '';
+    this.categorySelected = '';
+    this.mealsArr = [];
+    this.router.navigate(['/home']);
   }
 
   areFieldsEmpty(): boolean {

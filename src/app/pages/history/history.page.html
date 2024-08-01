@@ -4,11 +4,18 @@
   <ion-card-header class="ion-text-center">
     <ion-card-title>Este es todo tu historial de búsqueda 👀</ion-card-title>
     <ion-card-subtitle>Da click para realizar la búsqueda nuevamente o desliza para ver más opciones</ion-card-subtitle>
-
   </ion-card-header>
+
+  @if (history.length > 0) {
+    <ion-button color="danger" fill="outline" expand="block" (click)="deleteAllItems()">
+      Borrar todo el historial
+      <ion-icon slot="end" name="trash-outline"></ion-icon>
+    </ion-button>
+  }
+  <ion-icon slot="end" name="trash-outline"></ion-icon>
   <ion-list lines="none">
     @for (history of history; track $index) {
-      <ion-item-sliding>
+      <ion-item-sliding (click)="redirectToHomeAndExecuteSearch(history.value)">
         <div class="info">
           <ion-item>
             <ion-label>

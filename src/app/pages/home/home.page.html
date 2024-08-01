@@ -37,6 +37,12 @@
             <ion-icon slot="end" name="search-outline"></ion-icon>
           </ion-button>
         </ion-col>
+        <ion-col [size]="12">
+          <ion-button color="danger" fill="outline" expand="block" (click)="resetSearch()">
+            Resetear
+            <ion-icon slot="end" name="refresh-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
       </ion-row>
     </ion-card-content>
   </ion-card>
