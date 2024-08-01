@@ -3,7 +3,7 @@ import {
   IonHeader,
   IonToolbar,
   IonTitle,
-  IonIcon, IonButton, IonButtons, IonMenuToggle
+  IonIcon, IonButton, IonButtons, IonMenuToggle, IonBackButton
 } from '@ionic/angular/standalone';
 import {MenuController} from "@ionic/angular";
 
@@ -12,7 +12,7 @@ import {MenuController} from "@ionic/angular";
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [IonHeader, IonToolbar, IonTitle, IonIcon, IonButton, IonButtons, IonMenuToggle],
+  imports: [IonHeader, IonToolbar, IonTitle, IonIcon, IonButton, IonButtons, IonMenuToggle, IonBackButton],
 })
 export class HeaderComponent  {
   @Input() title: string = '';

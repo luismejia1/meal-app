@@ -1,11 +1,12 @@
 import {Component, inject} from '@angular/core';
 import {MODULES_HOME} from "./home.index";
-import {MealService} from "../core/services/meal.service";
+import {DishService} from "../../core/services/dish.service";
 import {catchError, throwError} from "rxjs";
-import {UtilsService} from "../core/services/utils.service";
-import {Category} from "../core/interfaces/category.interface";
+import {UtilsService} from "../../core/services/utils.service";
+import {Category} from "../../core/interfaces/category.interface";
 import {FormsModule} from "@angular/forms";
-import {Meal} from "../core/interfaces/meal.interface";
+import {Meal} from "../../core/interfaces/meal.interface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ import {Meal} from "../core/interfaces/meal.interface";
   imports: [MODULES_HOME, FormsModule],
 })
 export class HomePage {
-  private mealService = inject(MealService);
+  private mealService = inject(DishService);
   private utilsService = inject(UtilsService);
 
   categoriesOptions: Category[] = [];
@@ -24,7 +25,7 @@ export class HomePage {
   categorySelected: string = '';
   showSkeletonLoading: boolean = false;
 
-  constructor() {
+  constructor(private router: Router) {
     this.fetchCategoriesOptions();
   }
 
@@ -105,7 +106,7 @@ export class HomePage {
   }
 
   actionClick(item: any) {
-    console.log(item);
+    this.router.navigate([`/dish-detail/${item.idMeal}`]);
   }
 }
 
