@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar color="light" class="ion-color">
+    @if (showBackButton) {
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+    } @else {
+      <ion-buttons slot="start">
+        <ion-menu-toggle>
+          <ion-button>
+            <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-buttons>
+
+    }
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>

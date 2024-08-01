@@ -1,0 +1,85 @@
+<ion-content>
+  <app-header title="Inicio"></app-header>
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title>¡Bienvenido! 👋</ion-card-title>
+      <ion-card-subtitle>Descubre tus platillos favoritos aquí 🥗👀</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col [size]="12">
+          <ion-input
+            label="Buscar platillos"
+            fill="outline"
+            labelPlacement="floating"
+            placeholder="Introduce el nombre del platillo"
+            [(ngModel)]="nameToSearch"
+            (ionInput)="nameInputChange()"
+          ></ion-input>
+        </ion-col>
+
+        <ion-col [size]="12" class="ion-text-center">
+          <ion-text>Puedes buscar platillos por categoría también.</ion-text>
+        </ion-col>
+
+        <ion-col [size]="12">
+          <ion-select label="Categorías" placeholder="Selecciona una categoría" fill="outline"
+                      (ionChange)="onSelectChange($event)" [(ngModel)]="categorySelected">
+            <ion-select-option value="" disabled> Busca por categorías</ion-select-option>
+            @for (category of categoriesOptions; track $index) {
+              <ion-select-option [value]="category.strCategory">{{ category.strCategory }}</ion-select-option>
+            }
+          </ion-select>
+        </ion-col>
+        <ion-col [size]="12">
+          <ion-button color="success" fill="outline" expand="block" (click)="onClick()">
+            Buscar
+            <ion-icon slot="end" name="search-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col [size]="12">
+          <ion-button color="danger" fill="outline" expand="block" (click)="resetSearch()">
+            Resetear
+            <ion-icon slot="end" name="refresh-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    @defer (when mealsArr) {
+      <ion-card-header>
+        <ion-card-title>Platillos encontrados</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          @if (showSkeletonLoading) {
+            <app-item-skeleton></app-item-skeleton>
+          } @else {
+            @for (meal of mealsArr; track $index) {
+              <app-items-thumbnail-action [src]="meal.strMealThumb"
+                                          [title]="meal.strMeal"
+                                          [subtitle]="meal.strCategory"
+                                          [actionLabel]="'Ver detalle'"
+                                          [actionIcon]="'chevron-forward-outline'"
+                                          [actionColor]="'success'"
+                                          (buttonClickEvent)="actionClick(meal)"
+              ></app-items-thumbnail-action>
+            } @empty {
+              <ion-item lines="none" class="ion-text-center">
+                <ion-label>No se encontraron platillos</ion-label>
+              </ion-item>
+            }
+          }
+        </ion-list>
+      </ion-card-content>
+    } @placeholder () {
+      <ion-card-content class="ion-text-center">
+        Aquí se mostrarán los resultados de tu búsqueda.
+      </ion-card-content>
+    } @loading (minimum 1s) {
+      <app-item-skeleton></app-item-skeleton>
+    }
+  </ion-card>
+</ion-content>

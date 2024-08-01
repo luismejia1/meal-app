@@ -1,0 +1,14 @@
+.expanded {
+  display: block;
+}
+
+.collapsed {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+ion-button {
+  margin-top: 10px;
+}
