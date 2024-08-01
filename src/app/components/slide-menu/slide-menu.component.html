@@ -1,0 +1,17 @@
+<ion-menu contentId="main" menuId="menu-content" side="start" type="overlay">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>App Meals</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    @for (item of itemsMenu; track $index) {
+      <ion-menu-toggle>
+        <ion-item class="ion-color" lines="none" [routerLink]="item.url">
+          <ion-icon slot="start" [name]="item.icon"></ion-icon>
+          <ion-label>{{ item.label }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    }
+  </ion-content>
+</ion-menu>

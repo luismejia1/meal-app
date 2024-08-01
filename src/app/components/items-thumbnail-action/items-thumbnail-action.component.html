@@ -1,0 +1,13 @@
+<ion-item lines="none">
+  <ion-thumbnail slot="start">
+    <ion-img [src]="src"></ion-img>
+  </ion-thumbnail>
+  <ion-label>
+    <h2>{{ title }}</h2>
+    <p>{{ subtitle }}</p>
+  </ion-label>
+  <ion-button slot="end" [color]="actionColor" fill="outline" (click)="onAction()">
+    {{ actionLabel }}
+    <ion-icon slot="end" [name]="actionIcon"></ion-icon>
+  </ion-button>
+</ion-item>
