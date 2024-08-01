@@ -8,7 +8,8 @@ import {
   menuOutline,
   homeOutline,
   timerOutline,
-  arrowBackOutline
+  arrowBackOutline,
+  trashOutline
 } from "ionicons/icons";
 import {ToastController, LoadingController} from "@ionic/angular/standalone";
 
@@ -25,7 +26,7 @@ export class UtilsService {
   registerIcons() {
     addIcons({
       searchOutline, moonOutline, sunnyOutline, chevronForwardOutline, menuOutline, homeOutline, timerOutline,
-      arrowBackOutline
+      arrowBackOutline, trashOutline
     })
   }
 
@@ -51,5 +52,9 @@ export class UtilsService {
     }).then((toast) => {
       toast.present();
     });
+  }
+
+  generateRandomId() {
+    return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
   }
 }

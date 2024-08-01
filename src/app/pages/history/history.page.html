@@ -1,0 +1,34 @@
+<ion-content>
+  <app-header title="Historial de búsqueda"></app-header>
+
+  <ion-card-header class="ion-text-center">
+    <ion-card-title>Este es todo tu historial de búsqueda 👀</ion-card-title>
+    <ion-card-subtitle>Da click para realizar la búsqueda nuevamente o desliza para ver más opciones</ion-card-subtitle>
+
+  </ion-card-header>
+  <ion-list lines="none">
+    @for (history of history; track $index) {
+      <ion-item-sliding>
+        <div class="info">
+          <ion-item>
+            <ion-label>
+              <h2>{{ history.value }}</h2>
+              <p>Realizada el {{ history.date }} a las {{ history.time }}</p>
+            </ion-label>
+          </ion-item>
+        </div>
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteItem(history.id)">
+            <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    } @empty {
+      <ion-item>
+        <ion-label class="ion-text-center">
+          <h2>No hay historial de búsqueda</h2>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+</ion-content>

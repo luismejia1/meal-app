@@ -7,6 +7,8 @@ import {Category} from "../../core/interfaces/category.interface";
 import {FormsModule} from "@angular/forms";
 import {Meal} from "../../core/interfaces/meal.interface";
 import {Router} from "@angular/router";
+import {HistoryService} from "../../core/services/history.service";
+import {HistoryItem} from "../../core/interfaces/history-item.interface";
 
 @Component({
   selector: 'app-home',
@@ -18,15 +20,18 @@ import {Router} from "@angular/router";
 export class HomePage {
   private mealService = inject(DishService);
   private utilsService = inject(UtilsService);
+  private historyService = inject(HistoryService);
 
   categoriesOptions: Category[] = [];
   mealsArr!: Meal[];
   nameToSearch: string = '';
   categorySelected: string = '';
   showSkeletonLoading: boolean = false;
+  history: HistoryItem[] = [];
 
   constructor(private router: Router) {
     this.fetchCategoriesOptions();
+    this.history = this.historyService.getHistory() || [];
   }
 
   fetchCategoriesOptions() {
@@ -98,6 +103,7 @@ export class HomePage {
       this.searchMealByCategory(this.categorySelected);
     } else {
       this.searchMealByName(this.nameToSearch);
+      this.saveToHistory(this.nameToSearch)
     }
   }
 
@@ -108,5 +114,18 @@ export class HomePage {
   actionClick(item: any) {
     this.router.navigate([`/dish-detail/${item.idMeal}`]);
   }
+
+  saveToHistory(value: any) {
+    const item = {
+      id: this.utilsService.generateRandomId(),
+      value: value,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString()
+    };
+
+    this.history.push(item);
+    this.historyService.saveHistory(this.history);
+  }
+
 }
 
